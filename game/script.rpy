@@ -11,12 +11,7 @@
 # Игра начинается здесь:
 label start:
 
-    "Developer" "Привет" 
-    "Developer" "Это альфа версия новеллы" 
-    "Developer" "Работа над многими частями находится в активной фазе, поэтому в игре нет, например, детальных диалогов" 
-    "Developer" "Надеюсь на помнимание" 
-    
-    #TODO: RESTORE THIS TO prologue_day_1 TO BEGIN FROM THE START
-    jump prologue_day_1_nvl
+    #TODO: RESTORE THIS TO prologue_monologue TO BEGIN FROM THE START
+    jump prologue_monologue
 
     return
