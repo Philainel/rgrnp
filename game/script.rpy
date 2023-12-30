@@ -12,6 +12,6 @@
 label start:
 
     #TODO: RESTORE THIS TO prologue_monologue TO BEGIN FROM THE START
-    jump prologue_monologue
-
+    # jump prologue_monologue
+    jump chapter1_day1_start
     return

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import random
 
+#region parsetypes
 class Say:
     def __init__(self, name, expression):
         self.name = name
@@ -29,12 +30,20 @@ class Character:
     def __init__(self, name):
         self.name = name
 
-label = "prologue_monologue"
+class PlainText:
+    def __init__(self, text):
+        self.text = text
+
+    def to_string(self):
+        return f"# {self.text}"
+#endregion
+
+label = "chapter1_day1_sasha_success"
 file = "util/start.md"
-output = "util/prologue.rpy"
-switch = "prologue_mother"
-start = 9
-end = 59
+output = f"util/{label}.rpy"
+switch = ""
+start = 779
+end = 1012
 lines = []
 expressions = []
 write = 1
@@ -61,7 +70,9 @@ for line in lines:
             status = 1
             end = -1 if line.endswith("”") else None
             previous = ""
-            expressions.append(Say("", line[5:end]))
+            expressions.append(Say("", line[5:end].replace("\"", "\\\"")))
+        elif line.startswith("//"):
+            expressions.append(PlainText(line[3:]))
         elif line == "":
             continue
         else:
@@ -75,7 +86,7 @@ for line in lines:
             start = 6 if line.startswith("    –") else None
             end = (-1 if previous == "" else 0) + (-1 if line.endswith("”") else 0)
             end = end if end != 0 else None
-            expressions.append(Say(previous, line[start:end]))
+            expressions.append(Say(previous, line[start:end].replace("\"", "\\\"")))
     
 if switch != "":
     expressions.append(Switch(switch))
@@ -94,21 +105,11 @@ if write:
                     if not e.name in parsed_names:
                         parsed_names.append(e.name)
                     exp = Say(
-                            f"char{parsed_names.index(e.name)}", 
+                            f"char_{label}_{parsed_names.index(e.name)}", 
                             e.expression)
                     parsed_expressions.append(exp.to_string())
                 else:
                     parsed_expressions.append(Say("", "~ " + e.expression + " ~").to_string())
             else:
                 parsed_expressions.append(e.to_string())
-        F.write("# Parsed with util/parse.py\n\n" + "\n".join(map(lambda x: f'define char{parsed_names.index(x)} = Character("{x}")', parsed_names)) + f"\n\nlabel {label}:" + "\n    ".join(parsed_expressions) + "\n")
-
-# ts_expressions = list(map(lambda x: x.to_string(), expressions))
-# res = "import Script from '../Types/Script';//@ts-ignore\nimport {Back, Choice, Done, Else, Hide, If, Say, Show, Switch} from '../Types/Script/schortcut.ts';export default new Script([" + ",".join(ts_expressions) + "]);\n"
-# print(ts_expressions)
-# with open(output, "w") as F:
-#     if write:
-#         F.write(res)
-#     pass
-
-
+        F.write("# Builded with util/parse.py\n\n" + "\n".join(map(lambda x: f'define char_{label}_{parsed_names.index(x)} = Character("{x}")', parsed_names)) + f"\n\nlabel {label}:" + "\n    ".join(parsed_expressions) + "\n")
