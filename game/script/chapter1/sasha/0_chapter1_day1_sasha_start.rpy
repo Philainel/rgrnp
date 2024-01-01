@@ -2,6 +2,7 @@
 
 define char_chapter1_day1_sasha_start_0 = Character("Саша")
 define char_chapter1_day1_sasha_start_1 = Character("ГГ")
+define persistent.search_locaton = ""
 
 label chapter1_day1_sasha_start:
     "~ Несколько секунд Саша походила на хамелеона - эмоции на ее лице сменяли друг друга с поразительной скоростью. Когда она наконец остановилась на усталой смиренности, я выдохнул с облегчением: мне удалось избежать наказания за дерзость. ~"
@@ -27,6 +28,8 @@ label chapter1_day1_sasha_start:
     char_chapter1_day1_sasha_start_0 "Я не…"
     char_chapter1_day1_sasha_start_1 "Шучу ведь."
     "~ Что эти деятели подмешали в чай? ~"
+    scene rtf_hall_2 with dissolve
+    show sasha thinking straight
     "~ Мы брели по знакомым коридорам, которые с каждым поворотом становились всё менее знакомыми. ~"
     "~ В какой-то момент начали закрадываться сомнения, что мы всё ещё не сбились с верного пути. На остекленевшую Сашу не было никакой надежды ~"
     "~ Из очередной комнаты, которую пришлось покинуть с пустыми руками, Саша вышла совсем подавленной. Мы даже половины комнат не осмотрели, а она, кажется, уже потеряла всякую надежду на счастливый исход ~"
@@ -61,9 +64,11 @@ label chapter1_day1_sasha_start:
         #   …аудиторию со стендом-викториной.
         #   …последнюю аудиторию со стендом. (Мост к руту Риты)
         "…”радиоточку”.":
+            $ persistent.search_locaton = "caffeteria"
             jump chapter1_day1_rita_bridge
         "…аудиторию со стендом-викториной.":
             jump chapter1_day1_sasha_success
         "…последнюю аудиторию со стендом.":
+            $ persistent.search_locaton = "stand"
             jump chapter1_day1_rita_bridge
         

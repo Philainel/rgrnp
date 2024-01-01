@@ -3,15 +3,17 @@
 define char_prologue_monologue_0 = Character("??")
 define char_prologue_monologue_1 = Character("ГГ")
 
+image halfblack = "#00000088"
+
 label prologue_monologue:
     scene black
     with Pause(1)
-    show GUK with dissolve
-    show text "Пролог" at top 
+    scene rtf
+    show halfblack with dissolve
+    show text "Пролог" at top
     with dissolve
     with Pause(2)
     scene black with dissolve
-    with Pause(1)
     char_prologue_monologue_0 "Нет ничего. Лишь теплая первобытная тьма. В ней бродит твое сознание; оно не тяжелее ячменного зернышка. Всё. Тебе не нужно больше ничего делать. Никогда. Совсем никогда."
     char_prologue_monologue_1 "Вообще совсем никогда?"
     char_prologue_monologue_0 "Вообще совсем никогда."

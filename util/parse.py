@@ -38,12 +38,12 @@ class PlainText:
         return f"# {self.text}"
 #endregion
 
-label = "chapter1_day1_sasha_success"
+label = "chapter2_dayfirst_sasha_seems_end"
 file = "util/start.md"
 output = f"util/{label}.rpy"
-switch = ""
-start = 779
-end = 1012
+switch = "final_message"
+start = 1352
+end = None
 lines = []
 expressions = []
 write = 1

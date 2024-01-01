@@ -8,7 +8,8 @@ define char_chapter1_day1_radik_4 = Character("Саша")
 
 label chapter1_day1_radik:
     scene rtf_hall
-    show rita volonteer calm at left
+    show rita volonteer calm
+    show rita volonteer calm at left with ease
     char_chapter1_day1_radik_0 "С этого места начались мои учебные будние, будние моих друзей и сотен других радистов."
     char_chapter1_day1_radik_0 "Спросите любого из них о первом дне, когда они забыли свой студенческий дома - и вы будете поражены разнообразием ответов и мнений о нашем маленьком контрольно-пропускном пункте."
     char_chapter1_day1_radik_0 "Кто-то вспоминает его с любовью, кто-то - с благоговейным трепетом…"

@@ -2,8 +2,16 @@
 
 define char_chapter1_day1_start_0 = Character("Волонтёр")
 define char_chapter1_day1_start_1 = Character("Рита")
+image halfblack = "#00000088"
 
 label chapter1_day1_start:
+    scene black
+    with Pause(1)
+    scene rtf
+    show halfblack with dissolve
+    show text "Глава 1." at top
+    with dissolve
+    with Pause(2)
     scene bus with dissolve
     "~ Я сидел на мягком кресле в изрядно потрепанной дешевой обивке, прислонившись лицом к холодному стеклу дребезжащего окна. Пейзаж за окном, если не фокусировать внимание на деталях, казался статичным. ~"
     "~ Я смотрел на пёстрые крыши иномарок, цветные вывески магазинов и бутиков, разноцветные здания и разноцветных людей ~"
